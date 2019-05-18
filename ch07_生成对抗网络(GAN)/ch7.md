@@ -133,7 +133,6 @@ $$
 ​	因此，可以设计如下指标：
 $$
 IS(P_g)=e^{E_{x\sim P_g}[KL(p_M(y|x)\Vert{p_M(y)})]}
-根据前面分析，如果是一个训练良好的GAN，$p_M(y|x)​$趋近于脉冲分布，$p_M(y)​$趋近于均匀分布。二者KL散度会很大。Inception Score自然就高。实际实验表明，Inception Score和人的主观判别趋向一致。IS的计算没有用到真实数据，具体值取决于模型M的选择
 $$
 ​	根据前面分析，如果是一个训练良好的GAN，$p_M(y|x)$趋近于脉冲分布，$p_M(y)$趋近于均匀分布。二者KL散度会很大。Inception Score自然就高。实际实验表明，Inception Score和人的主观判别趋向一致。IS的计算没有用到真实数据，具体值取决于模型M的选择。
 
@@ -180,9 +179,8 @@ $$
 ​	FID距离计算真实样本，生成样本在特征空间之间的距离。首先利用Inception网络来提取特征，然后使用高斯模型对特征空间进行建模。根据高斯模型的均值和协方差来进行距离计算。具体公式如下：
 $$
 FID(\mathbb P_r,\mathbb P_g)=\lVert\mu_r-\mu_g\rVert+Tr(C_r+C_g-2(C_rC_g)^{1/2})
-$\mu,C$分别代表协方差和均值。
 $$
-$\mu,C​$分别代表协方差和均值。
+$\mu,C$分别代表协方差和均值。
 
 ​	**特点：尽管只计算了特征空间的前两阶矩，但是鲁棒，且计算高效。**
 
@@ -327,10 +325,10 @@ $$
 - Generator使用Adam，Discriminator使用SGD
 - 尽快发现错误；比如：判别器Loss为0，说明训练失败了；如果生成器Loss稳步下降，说明判别器没发挥作用
 - 不要试着通过比较生成器，判别器Loss的大小来解决训练过程中的模型坍塌问题。比如：
-  While Loss D > Loss A:
-  Train D
-  While Loss A > Loss D:
-  Train A
+    While Loss D > Loss A:
+    Train D
+    While Loss A > Loss D:
+    Train A
 - 如果有标签，请尽量利用标签信息来训练
 - 给判别器的输入加一些噪声，给G的每一层加一些人工噪声。
 - 多训练判别器，尤其是加了噪声的时候

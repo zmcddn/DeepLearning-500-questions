@@ -378,7 +378,7 @@ Softmax: 4030维。
 
 ## 5.22 NetVLAD池化    （贡献者：熊楚原-中国人民大学）
 
-NetVLAD是论文\[15\]提出的一个局部特征聚合的方法。
+NetVLAD是论文[15]提出的一个局部特征聚合的方法。
 
 在传统的网络里面，例如VGG啊，最后一层卷积层输出的特征都是类似于Batchsize x 3 x 3 x 512的这种东西，然后会经过FC聚合，或者进行一个Global Average Pooling（NIN里的做法），或者怎么样，变成一个向量型的特征，然后进行Softmax or 其他的Loss。
 
